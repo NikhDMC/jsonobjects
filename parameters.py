@@ -30,9 +30,9 @@ def get_environment(ch):
 
 
 def get_parameters(service,environment):
-        cmd=['aws', 'ssm', 'get-parameters-by-path', '--path', '"/ula/stage/general/%s/"', service, ' --profile %s', environment]
-        result=subprocess.Popen(cmd, stdout=subprocess.PIPE)
-        parameter_json_dev=result.communicate()
+        cmd=['aws', 'ssm', 'get-parameters-by-path', '--path', '"/ula/stage/general/{}/"'.format(service), ' --profile ',environment]
+        result=subprocess.run(cmd, stdout=subprocess.PIPE)
+        parameter_json_dev=result.stdout
         converted_parameter_json_dev = json.loads(parameter_json_dev)
         return converted_parameter_json_dev
 
@@ -54,10 +54,15 @@ def comparsion(converted_parameter_json_dev1,converted_parameter_json_dev2):
     return result_dict
 
 
-def data_display(resultant_dict,indent=-1):
-    print("|{:<100}| {:<180} |{:<150} ".format('Name', 'Environment1', 'Environment2'))
-    for Name, Value in resultant_dict_dict.items():
-        print("|{:<100}| {:<180} |{:<150} ".format(Name, Value[0], Value[1]))
+def data_display(resultant_dict):
+    f=open("output.txt","w")
+    f.write("|{:<100}| {:<180} |{:<150} ".format('Name', 'Environment1', 'Environment2'))
+    f.write("\n")
+    for Name, Value in resultant_dict.items():
+        f.write(print("|{:<100}| {:<180} |{:<150} ".format(Name, Value[0], Value[1])))
+        f.write("\n")
+    subprocess.run(['gedit', 'output.txt'])
+    f.close()
 
 
 if __name__ == "__main__":
