@@ -54,15 +54,15 @@ def comparsion(converted_parameter_json_dev1,converted_parameter_json_dev2):
     return result_dict
 
 
-def data_display(resultant_dict):
+def data_display(resultant_dict,env1,env2):
     f=open("output.txt","w")
-    f.write("|{:<100}| {:<180} |{:<150} ".format('Name', 'Environment1', 'Environment2'))
+    f.write("|{:<70}| {:<180} |{:<150} ".format('Name', env1, env2))
     f.write("\n")
     for Name, Value in resultant_dict.items():
-        f.write("|{:<100}| {:<180} |{:<150} ".format(Name, Value[0], Value[1]))
+        f.write("|{:<70}| {:<180} |{:<150} ".format(Name, Value[0], Value[1]))
         f.write("\n")
-    subprocess.run(['gedit', 'output.txt'])
     f.close()
+    subprocess.run(['gedit', 'output.txt'])
 
 
 if __name__ == "__main__":
@@ -76,5 +76,5 @@ if __name__ == "__main__":
         conv_json_dev1 = get_parameters(serv,env1)
         conv_json_dev2 = get_parameters(serv,env2)
         result_dict = comparsion(conv_json_dev1,conv_json_dev2)
-        data_display(result_dict)
+        data_display(result_dict,env1,env2)
 
