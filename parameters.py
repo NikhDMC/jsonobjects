@@ -30,7 +30,7 @@ def get_environment(ch):
 
 
 def get_parameters(service,environment):
-        cmd=['aws', 'ssm', 'get-parameters-by-path', '--path', '"/ula/stage/general/{}/"'.format(service), ' --profile ',environment]
+        cmd=['aws', 'ssm', 'get-parameters-by-path', '--path', '/ula/stage/general/{}/'.format(service), '--profile',environment]
         result=subprocess.run(cmd, stdout=subprocess.PIPE)
         parameter_json_dev=result.stdout
         converted_parameter_json_dev = json.loads(parameter_json_dev)
@@ -59,7 +59,7 @@ def data_display(resultant_dict):
     f.write("|{:<100}| {:<180} |{:<150} ".format('Name', 'Environment1', 'Environment2'))
     f.write("\n")
     for Name, Value in resultant_dict.items():
-        f.write(print("|{:<100}| {:<180} |{:<150} ".format(Name, Value[0], Value[1])))
+        f.write("|{:<100}| {:<180} |{:<150} ".format(Name, Value[0], Value[1]))
         f.write("\n")
     subprocess.run(['gedit', 'output.txt'])
     f.close()
