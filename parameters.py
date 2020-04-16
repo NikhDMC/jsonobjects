@@ -47,7 +47,7 @@ def comparsion(converted_parameter_json_dev1,converted_parameter_json_dev2):
     global Value0_len
 
     for i in converted_parameter_json_dev1["Parameters"]:
-        json_dev1_dict[i['Name']] = [i['Value'], "***null***"]
+        json_dev1_dict[i['Name']] = [i['Value'], "***NULL***"]
         if len(json_dev1_dict[i['Name']])> Name_len:
             Name_len=len(json_dev1_dict[i['Name']])
         if len(json_dev1_dict.get(i['Name'])[0])> Value0_len:
@@ -55,7 +55,7 @@ def comparsion(converted_parameter_json_dev1,converted_parameter_json_dev2):
 
     for j in converted_parameter_json_dev2["Parameters"]:
         if j['Name'] not in json_dev1_dict.keys():
-            result_dict[j['Name']] = ["***Null***", j['Value']]
+            result_dict[j['Name']] = ["***NULL***", j['Value']]
         if len(j['Name'])>Name_len:
             Name_len=len(j['Name'])
         if len(j['Value'])>Value1_len:
