@@ -95,7 +95,7 @@ def data_display(resultant_dict,env1,env2,serv):
 
 
 if __name__ == "__main__":
-    global Name_len,Value1_len,Value0_len
+   # global Name_len,Value1_len,Value0_len
     f = open('output.txt', 'r+')
     f.truncate(0)
     print("Select two environment for comparison \n1.ula-dev \n2.ula-stg \n3.ula-prod")
