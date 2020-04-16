@@ -95,6 +95,7 @@ def data_display(resultant_dict,env1,env2,serv):
 
 
 if __name__ == "__main__":
+    global Name_len,Value1_len,Value0_len
     f = open('output.txt', 'r+')
     f.truncate(0)
     print("Select two environment for comparison \n1.ula-dev \n2.ula-stg \n3.ula-prod")
@@ -104,9 +105,9 @@ if __name__ == "__main__":
     env2 = get_environment(ch2)
     service = get_services()
     for serv in service:
-        global Name_len=0
-        global Value0_len=0
-        global Value1_len=0
+        Name_len=0
+        Value0_len=0
+        Value1_len=0
         conv_json_dev1 = get_parameters(serv,env1)
         conv_json_dev2 = get_parameters(serv,env2)
         result_dict = comparsion(conv_json_dev1,conv_json_dev2)
