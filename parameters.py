@@ -60,7 +60,7 @@ def comparsion(converted_parameter_json_dev1,converted_parameter_json_dev2):
             Name_len=len(j['Name'])
         if len(j['Value'])>Value1_len:
             Value1_len=len(j['Value'])
-        elif j['Name'] in json_dev1_dict.keys():
+        if j['Name'] in json_dev1_dict.keys():
             if len(j['Name'])>Name_len:
                 Name_len=len(j['Name'])
             if j['Value'] != json_dev1_dict.get(j['Name'])[0]:
@@ -82,6 +82,7 @@ def data_display(resultant_dict,env1,env2,serv):
     f=open("output.txt","a+")
     print(serv)
     formatter = "|{:<" + str(Name_len) + "}| {:<" + str(Value0_len) + "} |{:<" + str(Value1_len) + "} "
+    f.write(serv)
     f.write(formatter.format('Name', env1, env2))
     f.write("\n")
     for Name, Value in resultant_dict.items():
