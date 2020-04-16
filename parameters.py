@@ -95,7 +95,6 @@ def data_display(resultant_dict,env1,env2,serv):
 
 
 if __name__ == "__main__":
-   # global Name_len,Value1_len,Value0_len
     f = open('output.txt', 'r+')
     f.truncate(0)
     print("Select two environment for comparison \n1.ula-dev \n2.ula-stg \n3.ula-prod")
@@ -112,5 +111,5 @@ if __name__ == "__main__":
         conv_json_dev2 = get_parameters(serv,env2)
         result_dict = comparsion(conv_json_dev1,conv_json_dev2)
         data_display(result_dict,env1,env2,serv)
-    subprocess.run(['gedit','output.txt',['&']])
+    subprocess.run(['gedit','output.txt','&'])
 
