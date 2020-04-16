@@ -79,7 +79,7 @@ def data_display(resultant_dict,env1,env2):
     global Value0_len
     global Value1_len
 
-    f=open("output.txt","w+")
+    f=open("output.txt","a+")
     formatter = "|{:<" + str(Name_len) + "}| {:<" + str(Value0_len) + "} |{:<" + str(Value1_len) + "} "
     f.write(formatter.format('Name', env1, env2))
     f.write("\n")
@@ -90,6 +90,8 @@ def data_display(resultant_dict,env1,env2):
 
 
 if __name__ == "__main__":
+    f = open('output.txt', 'r+')
+    f.truncate(0)
     print("Select two environment for comparison \n1.ula-dev \n2.ula-stg \n3.ula-prod")
     ch1 = input("Enter the first env ")
     env1 = get_environment(ch1)
