@@ -48,21 +48,15 @@ def comparsion(converted_parameter_json_dev1,converted_parameter_json_dev2):
 
     for i in converted_parameter_json_dev1["Parameters"]:
         json_dev1_dict[i['Name']] = [i['Value'], "***NULL***"]
-        #if len(json_dev1_dict[i['Name']])> Name_len:
-            #Name_len=len(json_dev1_dict[i['Name']])
-        #if len(json_dev1_dict.get(i['Name'])[0])> Value0_len:
-           # Value0_len=len(json_dev1_dict.get(i['Name'])[0])
 
     for j in converted_parameter_json_dev2["Parameters"]:
         if j['Name'] not in json_dev1_dict.keys():
             result_dict[j['Name']] = ["***NULL***", j['Value']]
-        if len(j['Name'])>Name_len:
-            Name_len=len(j['Name'])
-        if len(j['Value'])>Value1_len:
-            Value1_len=len(j['Value'])
+            if len(j['Name'])>Name_len:
+                Name_len=len(j['Name'])
+            if len(j['Value'])>Value1_len:
+                Value1_len=len(j['Value'])
         if j['Name'] in json_dev1_dict.keys():
-            #if len(j['Name'])>Name_len:
-                #Name_len=len(j['Name'])
             if j['Value'] != json_dev1_dict.get(j['Name'])[0]:
                 result_dict[j['Name']] = [json_dev1_dict.get(j['Name'])[0], j['Value']]
                 if len(j['Value'])>Value1_len:
@@ -111,5 +105,5 @@ if __name__ == "__main__":
         conv_json_dev2 = get_parameters(serv,env2)
         result_dict = comparsion(conv_json_dev1,conv_json_dev2)
         data_display(result_dict,env1,env2,serv)
-    subprocess.run(['gedit','output.txt&'])
+    subprocess.run(['gedit','output.txt'])
 
