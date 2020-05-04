@@ -59,10 +59,10 @@ def comparsion(converted_parameter_json_dev1,converted_parameter_json_dev2):
         if j['Name'] in json_dev1_dict.keys():
             if j['Value'] != json_dev1_dict.get(j['Name'])[0]:
                 result_dict[j['Name']] = [json_dev1_dict.get(j['Name'])[0], j['Value']]
-            if len(j['Value'])>Value1_len:
-                Value1_len=len(j['Value'])
-            if len(json_dev1_dict.get(j['Name'])[0])>Value0_len:
-                Value0_len=len(json_dev1_dict.get(j['Name'])[0])
+                if len(j['Value'])>Value1_len:
+                    Value1_len=len(j['Value'])
+                if len(json_dev1_dict.get(j['Name'])[0])>Value0_len:
+                    Value0_len=len(json_dev1_dict.get(j['Name'])[0])
             del json_dev1_dict[j['Name']]
     result_dict.update(json_dev1_dict)
     return result_dict
