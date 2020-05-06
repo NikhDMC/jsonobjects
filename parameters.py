@@ -43,6 +43,8 @@ def comparsion(converted_parameter_json_dev1,converted_parameter_json_dev2):
     result_dict = dict()
     global Name_len
     global Value0_len
+    a=0
+    b=0
 
     for i in converted_parameter_json_dev1["Parameters"]:
         json_dev1_dict[i['Name']] = [i['Value'], "***NULL***"]
